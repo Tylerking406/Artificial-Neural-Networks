@@ -39,16 +39,11 @@ test_loader = torch.utils.data.DataLoader(dataset=test_mnist, batch_size=batch_s
 
 # Iterate over the data loader
 for images, labels in train_loader:
-    # Print the shape of the current batch
-    print('Batch shape:', images.shape)
+    print(images.shape, labels.shape)
+    break  # Only print the shape of the first batch for demonstration
 
-    # Plot the first 5 images from the batch
-    num_images_to_display = 5
-    for i in range(num_images_to_display):
-        plt.subplot(1, num_images_to_display, i+1)
-        plt.imshow(images[i][0], cmap='gray')
-        plt.title('Label: {}'.format(labels[i].item()))
-        plt.axis('off')  # Hide axes
-    plt.show()
-
-    break  # Only print the first batch
+# Plot the first 6 samples
+for i in range(6):
+    plt.subplot(2, 3, i+1)
+    plt.imshow(images[i][0], cmap='gray')
+plt.show()

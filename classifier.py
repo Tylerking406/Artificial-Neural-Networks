@@ -25,17 +25,19 @@ transform = transforms.Compose([transforms.ToTensor()])
 DATA_DIR = "C:/Users/Student/OneDrive - University of Cape Town/Documents/2024/csc3022F/TUT/ML/TUT1"
 download_dataset = False
 
-train_mnist = datasets.MNIST(DATA_DIR, train=True, download=download_dataset, transform=transform)
+mnist_real_train = datasets.MNIST(DATA_DIR, train=True, download=download_dataset, transform=transform)
 test_mnist = datasets.MNIST(DATA_DIR, train=False, download=download_dataset, transform=transform)
 
+train_mnist, mnist_validation = torch.utils.data.random_split(mnist_real_train, (48000, 12000)) # train = 48000 validation set = 12 000
+
 # Shapes of train and test set
-print('train_mnist.shape: ',train_mnist.data.shape)
+print('train_mnist.shape: ',len(train_mnist))
 print('test_mnist.shape: ',test_mnist.data.shape)
 
 # Data Loaders
 train_loader = torch.utils.data.DataLoader(dataset=train_mnist, batch_size=batch_size, shuffle=True)
 test_loader = torch.utils.data.DataLoader(dataset=test_mnist, batch_size=batch_size, shuffle=False)
-
+valid_loader = torch.utils.data.DataLoader(dataset=mnist_validation, batch_size=batch_size, shuffle=False)
 
 # Iterate over the data loader
 for images, labels in train_loader:
@@ -47,3 +49,4 @@ for i in range(6):
     plt.subplot(2, 3, i+1)
     plt.imshow(images[i][0], cmap='gray')
 plt.show()
+

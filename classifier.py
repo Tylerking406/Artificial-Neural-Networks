@@ -26,7 +26,12 @@ print('train_mnist.shape: ',len(train_mnist))
 print('test_mnist.shape: ',test_mnist.data.shape)
 
 # Data Loaders
-batch_size = 64
+batch_size = 100
+iterations = 3000
+num_epochs = iterations / (len(train_mnist) / batch_size)
+num_epochs = int(num_epochs)
+
+
 train_loader = torch.utils.data.DataLoader(dataset=train_mnist, batch_size=batch_size, shuffle=True)
 test_loader = torch.utils.data.DataLoader(dataset=test_mnist, batch_size=batch_size, shuffle=False)
 

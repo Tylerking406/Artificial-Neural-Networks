@@ -9,6 +9,7 @@ import random
 import torchvision.transforms as transforms
 import os
 from torch.nn import functional as F
+import torch.utils.data as data
 
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 
@@ -20,6 +21,7 @@ download_dataset = False
 
 train_mnist = datasets.MNIST(DATA_DIR, train=True, download=download_dataset, transform=transform)
 test_mnist = datasets.MNIST(DATA_DIR, train=False, download=download_dataset, transform=transform)
+mnist_train, valid_mnist = data.random_split(train_mnist, (48000, 12000))
 
 # Shapes of train and test set
 print('train_mnist.shape: ',len(train_mnist))
@@ -65,4 +67,20 @@ input_size = 28*28 # 784
 hidden_size = 150
 output_size = 10 # 0 - 9 
 
-model = FeedForwardNeutralNet(input_size,hidden_size,output_size)   
+model = FeedForwardNeutralNet(input_size,hidden_size,output_size)
+
+loss_class = nn.CrossEntropyLoss()   #Objective Function
+
+#  Instantiate Optimizer Class
+lr = 0.01
+optimizer = torch.optim.SGD(model.parameters(), lr=lr)
+
+# FC 1 Parameters 
+print("W of 1st linear later: ",list(model.parameters())[0].size())
+print("b: ",list(model.parameters())[1].size())
+
+# FC 2 Parameters
+print("W of 2nd linear later: ",list(model.parameters())[2].size())
+print("b: ",list(model.parameters())[3].size())
+
+

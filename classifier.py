@@ -185,3 +185,16 @@ while True:
     if filepath.lower() == 'exit':
         print("Exiting...")
         break
+    
+     # Preprocess the image
+    try:
+        image = preprocess_image(filepath)
+    except Exception as e:
+        print("Failed to preProcess the model")
+        continue
+    
+    # Use the model to predict the digit
+    digit = classify_image(image, model)
+    print("Classifier:", digit)
+    
+    # C:/Users/Student/OneDrive - University of Cape Town/Documents/2024/csc3022F/TUT/ML/TUT1/MNIST_JPGS/testSample/img_1.jpg

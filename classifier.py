@@ -57,12 +57,9 @@ class FeedForwardNeutralNet(nn.Module):
         self.fully_connected_3 = nn.Linear(hidden_size,hidden_size)
         self.relu3 = nn.ReLU()
         
-        # Linear 4
-        self.fully_connected_4 = nn.Linear(hidden_size,hidden_size)
-        self.relu4 = nn.ReLU()
+        # Linear 4(output)
+        self.fully_connected_4 = nn.Linear(hidden_size,output_size)
         
-        # Linear out
-        self.fully_connected_5 = nn.Linear(hidden_size,output_size)
         
     
     def forward(self,x):
@@ -80,9 +77,6 @@ class FeedForwardNeutralNet(nn.Module):
         
         #Linear
         out = self.fully_connected_4(out)
-        out = self.relu4(out)
-        
-        out = self.fully_connected_5(out)
         
         return out
     

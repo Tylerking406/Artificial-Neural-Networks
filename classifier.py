@@ -35,6 +35,7 @@ num_epochs = int(num_epochs)
 
 train_loader = torch.utils.data.DataLoader(dataset=train_mnist, batch_size=batch_size, shuffle=True)
 test_loader = torch.utils.data.DataLoader(dataset=test_mnist, batch_size=batch_size, shuffle=False)
+validation_loader = torch.utils.data.DataLoader(dataset=valid_mnist, batch_size=batch_size, shuffle=False)
 
 # feedforward neural network Model
 class FeedForwardNeutralNet(nn.Module):

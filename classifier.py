@@ -142,4 +142,13 @@ for epoch in range(num_epochs):
             accuracy = 100 * correct.item() / total
 
             print('Validation Accuracy: {} %'.format(accuracy))
-            
+
+# Save the trained model
+save_model = False
+if save_model is False:
+    # Saves only parameters
+    torch.save(model.state_dict(), 'my_Model.pkl')
+    save_model = True
+    print("Model Saved!!")
+    
+    

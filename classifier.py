@@ -25,24 +25,37 @@ test_mnist = datasets.MNIST(DATA_DIR, train=False, download=download_dataset, tr
 print('train_mnist.shape: ',len(train_mnist))
 print('test_mnist.shape: ',test_mnist.data.shape)
 
-# Data Loaders
+# Make Dataset Iterable
 batch_size = 64
 iterations = 3000
 num_epochs = iterations / (len(train_mnist) / batch_size)
 num_epochs = int(num_epochs)
 
-
 train_loader = torch.utils.data.DataLoader(dataset=train_mnist, batch_size=batch_size, shuffle=True)
 test_loader = torch.utils.data.DataLoader(dataset=test_mnist, batch_size=batch_size, shuffle=False)
 
-# Iterate over the data loader
-for images, labels in train_loader:
-    print(images.shape, labels.shape)
-    break  # Only print the shape of the first batch for demonstration
-
-# Plot the first 6 samples
-for i in range(6):
-    plt.subplot(2, 3, i+1)
-    plt.imshow(images[i][0], cmap='gray')
-#plt.show()
-
+# feedforward neural network Model
+class FeedForwardNeutralNet(nn.Module):
+    def __init__(self, input_Size, hidden_size,output_size):
+        super(FeedForwardNeutralNet,self).__init__(input_Size,hidden_size,output_size)
+        
+        # Linear function
+        self.fully_connected_1 = nn.Linear(input_Size, hidden_size)  # Layer 1
+        
+        #Non Linear
+        self.sigmoid = nn.Sigmoid # Layer 2 = Activation function
+        
+        # Linear function
+        self.fully_connected_2 = nn.Linear(hidden_size,output_size) # Layer 3
+    
+    def forward(self,x):
+        # Linear
+        out = self.fc1(x)
+        
+        # Non Lonear
+        out = self.sigmoid(out)
+        
+        # linear
+        out = self.fc2(out)
+        
+        return out

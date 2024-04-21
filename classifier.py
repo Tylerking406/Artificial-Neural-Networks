@@ -151,4 +151,14 @@ if save_model is False:
     save_model = True
     print("Model Saved!!")
     
-    
+   
+# Function to preprocess the image
+def preprocess_image(image_path):
+    transform = transforms.Compose([
+        transforms.ToTensor()
+    ])
+    image = Image.open(image_path)
+    image = transform(image).unsqueeze(0)  # Add batch dimension
+    image = image.view(-1, 28*28)  # Flatten the image
+    return image
+ 

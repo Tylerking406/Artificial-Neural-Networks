@@ -163,3 +163,18 @@ def preprocess_image(image_path):
     image = image.view(-1, 28*28)  # Flatten the image
     return image
  
+ 
+ # Function to predict the label of the image
+def classify_image(image, model):
+    with torch.no_grad():
+        output = model(image)
+        _, predicted = torch.max(output, 1)
+    return predicted.item() 
+
+
+# Load the trained model
+model_path = 'awesome_model.pkl'
+input_size = 28 * 28
+output_size = 10
+model.load_state_dict(torch.load(model_path))
+model.eval()  # Set the model to evaluation mode

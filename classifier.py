@@ -10,6 +10,7 @@ import torchvision.transforms as transforms
 import os
 from torch.nn import functional as F
 import torch.utils.data as data
+from PIL import Image       # Used when openning an image
 
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 

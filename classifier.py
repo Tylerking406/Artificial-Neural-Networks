@@ -24,10 +24,10 @@ train_mnist = datasets.MNIST(DATA_DIR, train=True, download=download_dataset, tr
 test_mnist = datasets.MNIST(DATA_DIR, train=False, download=download_dataset, transform=transform)
 train_mnist, valid_mnist = data.random_split(train_mnist, (48000, 12000))
 
-# Shapes of train and test set
-print('train_mnist.shape: ',len(train_mnist))
-print('test_mnist.shape: ',test_mnist.data.shape)
-print("Valid:", len(valid_mnist))
+# # Shapes of train and test set
+# print('train_mnist.shape: ',len(train_mnist))
+# print('test_mnist.shape: ',test_mnist.data.shape)
+# print("Valid:", len(valid_mnist))
 
 # Make Dataset Iterable
 batch_size = 64
@@ -94,13 +94,6 @@ loss_class = nn.CrossEntropyLoss()   #Objective Function
 lr = 0.1
 optimizer = torch.optim.SGD(model.parameters(), lr=lr)
 
-# FC 1 Parameters 
-print("W of 1st linear later: ",list(model.parameters())[0].size())
-print("b: ",list(model.parameters())[1].size())
-
-# FC 2 Parameters
-print("W of 2nd linear later: ",list(model.parameters())[2].size())
-print("b: ",list(model.parameters())[3].size())
 
 # Train the model
 total_step = len(train_loader)

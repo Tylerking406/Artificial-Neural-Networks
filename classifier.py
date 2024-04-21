@@ -178,3 +178,10 @@ input_size = 28 * 28
 output_size = 10
 model.load_state_dict(torch.load(model_path))
 model.eval()  # Set the model to evaluation mode
+
+# Allow user_input and make predictions
+while True:
+    filepath = input("Please enter a filepath (type 'exit' to quit):\n")
+    if filepath.lower() == 'exit':
+        print("Exiting...")
+        break

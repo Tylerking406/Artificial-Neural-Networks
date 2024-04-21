@@ -40,26 +40,28 @@ validation_loader = torch.utils.data.DataLoader(dataset=valid_mnist, batch_size=
 # feedforward neural network Model
 class FeedForwardNeutralNet(nn.Module):
     def __init__(self, input_Size, hidden_size,output_size):
-        super(FeedForwardNeutralNet,self).__init__(input_Size,hidden_size,output_size)
+        super(FeedForwardNeutralNet,self).__init__()
         
         # Linear function
         self.fully_connected_1 = nn.Linear(input_Size, hidden_size)  # Layer 1
         
         #Non Linear
-        self.sigmoid = nn.Sigmoid # Layer 2 = Activation function
+        self.sigmoid = nn.Sigmoid() # Layer 2 = Activation function
         
         # Linear function
         self.fully_connected_2 = nn.Linear(hidden_size,output_size) # Layer 3
     
     def forward(self,x):
+        # Flatten the input image
+        x = x.view(x.size(0), -1)
         # Linear
-        out = self.fc1(x)
+        out = self.fully_connected_1(x)
         
         # Non Lonear
         out = self.sigmoid(out)
         
         # linear
-        out = self.fc2(out)
+        out = self.fully_connected_2(out)
         
         return out
     
@@ -84,4 +86,34 @@ print("b: ",list(model.parameters())[1].size())
 print("W of 2nd linear later: ",list(model.parameters())[2].size())
 print("b: ",list(model.parameters())[3].size())
 
+# Train the model
+total_step = len(train_loader)
 
+for epoch in range(num_epochs):
+    for i, (images, labels) in enumerate(train_loader):
+
+        # Forward pass
+        outputs = model(images)
+        labels = labels.view(-1, 1).float()
+        
+        loss = loss_class(outputs, labels)
+        optimizer.zero_grad()
+
+        loss.backward()
+        optimizer.step()
+
+        if (i+1) % 50 == 0:
+            print ('Epoch [{}/{}], Step [{}/{}], Loss: {:.4f}' 
+                   .format(epoch+1, num_epochs, i+1, total_step, loss.item()))
+            # Compute validation accuracy
+            correct = 0
+            total = 0
+            for images, labels in validation_loader:
+                outputs = model(images)
+                predicted = torch.round(outputs).squeeze()
+                total += labels.size(0)
+                correct += (predicted == labels).sum()
+            accuracy = 100 * correct.item() / total
+
+            print('Validation Accuracy: {} %'.format(accuracy))
+            

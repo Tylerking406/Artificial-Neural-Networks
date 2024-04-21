@@ -59,3 +59,10 @@ class FeedForwardNeutralNet(nn.Module):
         out = self.fc2(out)
         
         return out
+    
+# Instantiate the model
+input_size = 28*28 # 784
+hidden_size = 150
+output_size = 10 # 0 - 9 
+
+model = FeedForwardNeutralNet(input_size,hidden_size,output_size)   

@@ -1,0 +1,1 @@
+# This file uses the trained model to predict user images

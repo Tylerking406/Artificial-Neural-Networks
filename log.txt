@@ -1,0 +1,103 @@
+Epoch [1/3], Step [50/750], Loss: 0.3090
+Validation Accuracy: 86.19166666666666 %
+Epoch [1/3], Step [100/750], Loss: 0.5270
+Validation Accuracy: 90.875 %
+Epoch [1/3], Step [150/750], Loss: 0.2030
+Validation Accuracy: 91.64166666666667 %
+Epoch [1/3], Step [200/750], Loss: 0.1366
+Validation Accuracy: 92.55833333333334 %
+Epoch [1/3], Step [250/750], Loss: 0.1991
+Validation Accuracy: 93.76666666666667 %
+Epoch [1/3], Step [300/750], Loss: 0.1433
+Validation Accuracy: 93.925 %
+Epoch [1/3], Step [350/750], Loss: 0.2107
+Validation Accuracy: 94.89166666666667 %
+Epoch [1/3], Step [400/750], Loss: 0.2716
+Validation Accuracy: 94.78333333333333 %
+Epoch [1/3], Step [450/750], Loss: 0.1493
+Validation Accuracy: 95.15 %
+Epoch [1/3], Step [500/750], Loss: 0.1383
+Validation Accuracy: 94.45 %
+Epoch [1/3], Step [550/750], Loss: 0.1014
+Validation Accuracy: 95.53333333333333 %
+Epoch [1/3], Step [600/750], Loss: 0.1127
+Validation Accuracy: 95.55833333333334 %
+Epoch [1/3], Step [650/750], Loss: 0.2491
+Validation Accuracy: 95.38333333333334 %
+Epoch [1/3], Step [700/750], Loss: 0.0965
+Validation Accuracy: 95.81666666666666 %
+Epoch [1/3], Step [750/750], Loss: 0.1860
+Validation Accuracy: 95.71666666666667 %
+Epoch [2/3], Step [50/750], Loss: 0.3090
+Validation Accuracy: 96.0 %
+Epoch [2/3], Step [100/750], Loss: 0.0201
+Validation Accuracy: 96.3 %
+Epoch [2/3], Step [150/750], Loss: 0.0863
+Validation Accuracy: 96.60833333333333 %
+Epoch [2/3], Step [200/750], Loss: 0.0261
+Validation Accuracy: 96.1 %
+Epoch [2/3], Step [250/750], Loss: 0.1206
+Validation Accuracy: 96.55 %
+Epoch [2/3], Step [300/750], Loss: 0.1678
+Validation Accuracy: 94.43333333333334 %
+Epoch [2/3], Step [350/750], Loss: 0.4031
+Validation Accuracy: 96.725 %
+Epoch [2/3], Step [400/750], Loss: 0.0724
+Validation Accuracy: 96.80833333333334 %
+Epoch [2/3], Step [450/750], Loss: 0.0166
+Validation Accuracy: 96.55 %
+Epoch [2/3], Step [500/750], Loss: 0.1717
+Validation Accuracy: 95.93333333333334 %
+Epoch [2/3], Step [550/750], Loss: 0.0886
+Validation Accuracy: 96.81666666666666 %
+Epoch [2/3], Step [600/750], Loss: 0.0523
+Validation Accuracy: 96.8 %
+Epoch [2/3], Step [650/750], Loss: 0.0999
+Validation Accuracy: 96.29166666666667 %
+Epoch [2/3], Step [700/750], Loss: 0.0334
+Validation Accuracy: 96.60833333333333 %
+Epoch [2/3], Step [750/750], Loss: 0.1618
+Validation Accuracy: 97.10833333333333 %
+Epoch [3/3], Step [50/750], Loss: 0.1205
+Validation Accuracy: 96.25833333333334 %
+Epoch [3/3], Step [100/750], Loss: 0.0509
+Validation Accuracy: 97.18333333333334 %
+Epoch [3/3], Step [150/750], Loss: 0.0444
+Validation Accuracy: 96.61666666666666 %
+Epoch [3/3], Step [200/750], Loss: 0.0657
+Validation Accuracy: 97.025 %
+Epoch [3/3], Step [250/750], Loss: 0.0748
+Validation Accuracy: 97.125 %
+Epoch [3/3], Step [300/750], Loss: 0.0512
+Validation Accuracy: 96.86666666666666 %
+Epoch [3/3], Step [350/750], Loss: 0.0877
+Validation Accuracy: 97.21666666666667 %
+Epoch [3/3], Step [400/750], Loss: 0.0761
+Validation Accuracy: 96.16666666666667 %
+Epoch [3/3], Step [450/750], Loss: 0.2872
+Validation Accuracy: 96.575 %
+Epoch [3/3], Step [500/750], Loss: 0.0381
+Validation Accuracy: 97.15 %
+Epoch [3/3], Step [550/750], Loss: 0.0934
+Validation Accuracy: 97.15 %
+Epoch [3/3], Step [600/750], Loss: 0.0394
+Validation Accuracy: 97.00833333333334 %
+Epoch [3/3], Step [650/750], Loss: 0.0783
+Validation Accuracy: 97.14166666666667 %
+Epoch [3/3], Step [700/750], Loss: 0.0439
+Validation Accuracy: 96.98333333333333 %
+Epoch [3/3], Step [750/750], Loss: 0.0117
+Validation Accuracy: 97.41666666666667 %
+Model Saved!!
+Please enter a filepath (type 'exit' to quit):
+C:/Users/Student/OneDrive - University of Cape Town/Documents/2024/csc3022F/TUT/ML/TUT1/MNIST_JPGS/testSample/img_1.jpg
+Classifier: 2
+Please enter a filepath (type 'exit' to quit):
+C:/Users/Student/OneDrive - University of Cape Town/Documents/2024/csc3022F/TUT/ML/TUT1/MNIST_JPGS/testSample/img_100.jpg
+Classifier: 4
+Please enter a filepath (type 'exit' to quit):
+C:/Users/Student/OneDrive - University of Cape Town/Documents/2024/csc3022F/TUT/ML/TUT1/MNIST_JPGS/testSample/img_129.jpg
+Classifier: 8
+Please enter a filepath (type 'exit' to quit):
+exit
+Exiting...

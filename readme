@@ -1,0 +1,38 @@
+Image Classification with Neural Network (MNIST)
+
+##description
+ This is a Python project that demonstrates how to perform image classification on the MNIST dataset using a pre-trained neural network model. This project allows users to input image files and obtain predictions for the digits represented in those images. It includes functionality for preprocessing images, loading a pre-trained model, and performing inference. This project serves as a simple example of how to use pre-trained models for image classification tasks.
+
+ ##Requirements
+  Python 3.x
+  PyTorch
+  torchvision
+  PIL (Python Imaging Library)
+
+## Usage
+  1.unzip The code
+  2.Navigate to the project directory
+  3.run "python classifier.py" on terminal
+  4.run "python userInteraction.py" on terminal
+
+## Files
+Classifier.py
+ - This is the python Scripy
+ - It is responsible for creating the model
+ - It also train the model and save it
+
+UserInteraction.py
+ - It allow user to use the pre trained model
+ - It prompt user for image path and predict it's label
+
+gitRepo
+ -contains all my commits
+log.txt
+ - This is a file that contains the output of the last time I ran the model
+ - It shows the training loss of the model after each epoch
+ - It also has the accuracy after each step and epoch
+
+ ## Code structure
+ 1."classifier.py" which is the main script
+ 2."userInteraction.py" - utility script
+ 3."my_Model.pkl" - Model

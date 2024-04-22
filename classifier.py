@@ -2,19 +2,17 @@
 import torch
 import torch.nn as nn
 from torchvision import datasets
-from matplotlib.pyplot import imshow
-import matplotlib.pyplot as plt
-import numpy as np
-import random
 import torchvision.transforms as transforms
 import os
-from torch.nn import functional as F
 import torch.utils.data as data
-from PIL import Image       # Used when openning an image
 
-os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 
-transform = transforms.Compose([transforms.ToTensor()])
+os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE" # will be useful if you use matplot
+
+transform = transforms.Compose([
+    transforms.ToTensor(),
+    transforms.Normalize((0.1307,), (0.3081,))  # Mean and standard deviation of MNIST dataset
+])
 
 # Load MNIST from file
 DATA_DIR = "C:/Users/Student/OneDrive - University of Cape Town/Documents/2024/csc3022F/TUT/ML/TUT1"
@@ -33,7 +31,7 @@ train_mnist, valid_mnist = data.random_split(train_mnist, (48000, 12000))
 batch_size = 64
 iterations = 3750
 num_epochs = iterations / (len(train_mnist) / batch_size) # 5
-num_epochs = int(num_epochs)
+num_epochs = int(num_epochs) - 2
 
 train_loader = torch.utils.data.DataLoader(dataset=train_mnist, batch_size=batch_size, shuffle=True)
 test_loader = torch.utils.data.DataLoader(dataset=test_mnist, batch_size=batch_size, shuffle=False)
@@ -83,7 +81,7 @@ class FeedForwardNeutralNet(nn.Module):
     
 # Instantiate the model
 input_size = 28*28 # 784
-hidden_size = 150
+hidden_size = 200
 output_size = 10 # 0 - 9 
 
 model = FeedForwardNeutralNet(input_size,hidden_size,output_size)
@@ -91,8 +89,8 @@ model = FeedForwardNeutralNet(input_size,hidden_size,output_size)
 loss_class = nn.CrossEntropyLoss()   #Objective Function
 
 #  Instantiate Optimizer Class
-lr = 0.1
-optimizer = torch.optim.SGD(model.parameters(), lr=lr)
+lr = 0.001
+optimizer = torch.optim.RMSprop(model.parameters(), lr=lr)
 
 
 # Train the model
@@ -110,7 +108,6 @@ for epoch in range(num_epochs):
         # Forward pass to get output/logits
         outputs = model(images)
 
-        # Calculate Loss: softmax --> cross entropy loss
         loss = loss_class(outputs, labels)
 
         # Getting gradients w.r.t. parameters
@@ -146,48 +143,3 @@ if save_model is False:
     print("Model Saved!!")
     
    
-# Function to preprocess the image
-def preprocess_image(image_path):
-    transform = transforms.Compose([
-        transforms.ToTensor()
-    ])
-    image = Image.open(image_path)
-    image = transform(image).unsqueeze(0)  # Add batch dimension
-    image = image.view(-1, 28*28)  # Flatten the image
-    return image
- 
- 
- # Function to predict the label of the image
-def classify_image(image, model):
-    with torch.no_grad():
-        output = model(image)
-        _, predicted = torch.max(output, 1)
-    return predicted.item() 
-
-
-# Load the trained model
-model_path = 'awesome_model.pkl'
-input_size = 28 * 28
-output_size = 10
-model.load_state_dict(torch.load(model_path))
-model.eval()  # Set the model to evaluation mode
-
-# Allow user_input and make predictions
-while True:
-    filepath = input("Please enter a filepath (type 'exit' to quit):\n")
-    if filepath.lower() == 'exit':
-        print("Exiting...")
-        break
-    
-     # Preprocess the image
-    try:
-        image = preprocess_image(filepath)
-    except Exception as e:
-        print("Failed to preProcess the model")
-        continue
-    
-    # Use the model to predict the digit
-    digit = classify_image(image, model)
-    print("Classifier:", digit)
-    
-    # C:/Users/Student/OneDrive - University of Cape Town/Documents/2024/csc3022F/TUT/ML/TUT1/MNIST_JPGS/testSample/img_1.jpg
